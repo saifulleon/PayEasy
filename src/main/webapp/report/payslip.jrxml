@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="payslip" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42fef457-8bc1-44c3-8b36-efbfb33488ca">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="payid" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     payment.`paymentid` AS payment_paymentid,
+     payment.`empname` AS payment_empname,
+     payment.`jobtitlename` AS payment_jobtitlename,
+     payment.`basicyearvalue` AS payment_basicyearvalue,
+     payment.`basicsalaryamount` AS payment_basicsalaryamount,
+     payment.`payingmonth` AS payment_payingmonth,
+     payment.`payingyear` AS payment_payingyear,
+     payment.`paytypename` AS payment_paytypename,
+     payment.`checkno` AS payment_checkno,
+     payment.`bankname` AS payment_bankname,
+     payment.`totalallowance` AS payment_totalallowance,
+     payment.`totaldeduction` AS payment_totaldeduction,
+     payment.`netsalary` AS payment_netsalary
+FROM
+     `payment` payment
+WHERE paymentid=$P{payid}]]>
+	</queryString>
+	<field name="payment_paymentid" class="java.lang.Integer"/>
+	<field name="payment_empname" class="java.lang.String"/>
+	<field name="payment_jobtitlename" class="java.lang.String"/>
+	<field name="payment_basicyearvalue" class="java.lang.String"/>
+	<field name="payment_basicsalaryamount" class="java.lang.Double"/>
+	<field name="payment_payingmonth" class="java.lang.String"/>
+	<field name="payment_payingyear" class="java.lang.String"/>
+	<field name="payment_paytypename" class="java.lang.String"/>
+	<field name="payment_checkno" class="java.lang.String"/>
+	<field name="payment_bankname" class="java.lang.String"/>
+	<field name="payment_totalallowance" class="java.lang.Double"/>
+	<field name="payment_totaldeduction" class="java.lang.Double"/>
+	<field name="payment_netsalary" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="232" y="0" width="283" height="40" uuid="a9e3748d-81b2-4cc7-8c75-8cb89243fd10"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Payslip]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="b923ec2e-bd19-4ff8-946a-04a1d82be5ad"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="330" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="16371eae-31cd-406b-aa9e-9750b2a8ec8b"/>
+			</frame>
+			<staticText>
+				<reportElement style="Column header" x="86" y="15" width="112" height="15" forecolor="#736343" uuid="3374dfb2-fc72-4ce0-a823-512c32f7ddbf"/>
+				<text><![CDATA[Payment ID : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="15" width="193" height="15" uuid="b0684ae8-3c91-4f6a-8460-89a1374e15b6"/>
+				<textFieldExpression><![CDATA[$F{payment_paymentid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="42" width="112" height="15" forecolor="#736343" uuid="e0f10c94-e8c1-4bcf-bbd7-7062d629e6bc"/>
+				<text><![CDATA[Employee Name : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="42" width="193" height="15" uuid="f8f4bd99-7503-4445-b1d0-896acaeef1ef"/>
+				<textFieldExpression><![CDATA[$F{payment_empname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="67" width="112" height="15" forecolor="#736343" uuid="f318597f-57e1-4aba-b659-a9f04d4864a5"/>
+				<text><![CDATA[Designation : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="67" width="193" height="15" uuid="cd817e32-d3cf-4d79-961b-552eb90aaccd"/>
+				<textFieldExpression><![CDATA[$F{payment_jobtitlename}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="94" width="112" height="15" forecolor="#736343" uuid="b6187dae-fb64-449b-aa81-9cab1e6408ad"/>
+				<text><![CDATA[Basic Year : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="94" width="193" height="15" uuid="a21095a4-9886-4e55-9f2b-3edb5a75b251"/>
+				<textFieldExpression><![CDATA[$F{payment_basicyearvalue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="119" width="112" height="15" forecolor="#736343" uuid="7876a0be-af4f-4023-b16a-b8e9aa582e2d"/>
+				<text><![CDATA[Basic Salary : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="119" width="193" height="15" uuid="d285fa49-bfc2-42c9-99b7-2f93bbe5a7ec"/>
+				<textFieldExpression><![CDATA[$F{payment_basicsalaryamount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="144" width="112" height="15" forecolor="#736343" uuid="33864006-5c40-4d8c-8206-e6c81e6c1296"/>
+				<text><![CDATA[Paid for : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="144" width="97" height="15" uuid="1febbe62-3822-43f4-ae1d-7e73b93820a3"/>
+				<textFieldExpression><![CDATA[$F{payment_payingmonth}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="295" y="144" width="96" height="15" uuid="9f46d86a-1140-46b5-a176-11beacbb5748"/>
+				<textFieldExpression><![CDATA[$F{payment_payingyear}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="170" width="112" height="15" forecolor="#736343" uuid="ecf40e07-b590-4b1e-8ed7-e686e279b412"/>
+				<text><![CDATA[Payment Type: ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="170" width="193" height="15" uuid="8a2c2ef8-d07a-47ee-9644-14f4210e3cd2"/>
+				<textFieldExpression><![CDATA[$F{payment_paytypename}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="115" y="195" width="83" height="15" forecolor="#736343" uuid="fc3f0685-57d7-4488-8a36-b12e68eed05b"/>
+				<text><![CDATA[Bank : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="195" width="193" height="15" uuid="76434fb5-0a0b-4c48-9fd8-0127a46b77ef"/>
+				<textFieldExpression><![CDATA[$F{payment_bankname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="115" y="210" width="83" height="15" forecolor="#736343" uuid="2d3c48e1-9ec0-4726-b954-f1f84740b172"/>
+				<text><![CDATA[Check No : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="210" width="193" height="15" uuid="3022d89e-f3a2-4503-a019-16ba6dc10d6b"/>
+				<textFieldExpression><![CDATA[$F{payment_checkno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="246" width="112" height="15" forecolor="#736343" uuid="a6dc63ff-bc60-417c-9d2d-1519161b4d02"/>
+				<text><![CDATA[Total Allowance : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="246" width="193" height="15" uuid="1846f365-5414-4867-bc66-64163504731d"/>
+				<textFieldExpression><![CDATA[$F{payment_totalallowance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="271" width="112" height="15" forecolor="#736343" uuid="ab09896e-a8c5-429c-90eb-64ec9bc561c2"/>
+				<text><![CDATA[Total Deduction : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="271" width="193" height="15" uuid="4a72c993-0d9a-4533-b938-2c4480f6858a"/>
+				<textFieldExpression><![CDATA[$F{payment_totaldeduction}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="86" y="297" width="112" height="15" forecolor="#736343" uuid="061b0776-16f4-4ad6-acea-3b57288cf64c"/>
+				<text><![CDATA[Net Salary : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="297" width="193" height="15" uuid="bfe27dd7-c247-411c-a617-3578267db2e5"/>
+				<textFieldExpression><![CDATA[$F{payment_netsalary}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="462" y="134" width="100" height="1" uuid="d0a7f10c-bfa4-404b-be16-6ba845712b9e"/>
+			</line>
+			<subreport>
+				<reportElement x="462" y="15" width="200" height="100" uuid="e83d9022-45d8-4794-b6d2-ee7c3d73dfe9"/>
+				<subreportParameter name="payid">
+					<subreportParameterExpression><![CDATA[$P{payid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "payslip_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="462" y="159" width="200" height="100" uuid="88a39a7b-328d-4885-9714-873eddcba60d"/>
+				<subreportParameter name="payid">
+					<subreportParameterExpression><![CDATA[$P{payid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "payslip_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="dc77632b-743f-49a0-9258-406326181147"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="ca41951f-72bc-4c4e-b714-e88e4006b807"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="8a978d93-ec4d-48bc-9be6-480725d1bde7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="65b7e963-50a1-40ca-942c-f726275bd23c"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="6b677a1a-b6a9-4bf7-b741-fab94e0cc7c7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
