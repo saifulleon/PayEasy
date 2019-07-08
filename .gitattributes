@@ -3,4 +3,4 @@
 #* linguist-vendored
 #*.java linguist-vendored=false
 
-src/main/webapp/resources/* linguist-vendored
+src/main/webapp/resources/theme/* linguist-vendored
