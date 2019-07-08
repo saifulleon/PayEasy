@@ -14,7 +14,7 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["https://github.com/saifulleon/PayEasy/raw/master/src/main/webapp/report/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="payid" class="java.lang.Integer"/>
 	<queryString>

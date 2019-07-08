@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `allowancecal` (
   PRIMARY KEY (`allowancecalid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Dumping data for table payeasy.allowancecal: ~10 rows (approximately)
+-- Dumping data for table payeasy.allowancecal: ~9 rows (approximately)
 DELETE FROM `allowancecal`;
 /*!40000 ALTER TABLE `allowancecal` DISABLE KEYS */;
 INSERT INTO `allowancecal` (`allowancecalid`, `jobtitlename`, `allowancehead`, `basicsalaryamount`, `percent`, `amount`, `basicyearvalue`) VALUES
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `deductioncal` (
   PRIMARY KEY (`deductioncalid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Dumping data for table payeasy.deductioncal: ~12 rows (approximately)
+-- Dumping data for table payeasy.deductioncal: ~11 rows (approximately)
 DELETE FROM `deductioncal`;
 /*!40000 ALTER TABLE `deductioncal` DISABLE KEYS */;
 INSERT INTO `deductioncal` (`deductioncalid`, `jobtitlename`, `deductionhead`, `basicsalaryamount`, `percent`, `amount`, `basicyearvalue`) VALUES
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `address` varchar(50) DEFAULT NULL,
   `emailid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table payeasy.employee: ~4 rows (approximately)
 DELETE FROM `employee`;
@@ -226,9 +226,9 @@ CREATE TABLE IF NOT EXISTS `payallowance` (
   `allowancehead` varchar(50) DEFAULT NULL,
   `amount` double DEFAULT NULL,
   PRIMARY KEY (`payallowanceid`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Dumping data for table payeasy.payallowance: ~17 rows (approximately)
+-- Dumping data for table payeasy.payallowance: ~19 rows (approximately)
 DELETE FROM `payallowance`;
 /*!40000 ALTER TABLE `payallowance` DISABLE KEYS */;
 INSERT INTO `payallowance` (`payallowanceid`, `paymentid`, `allowancehead`, `amount`) VALUES
@@ -248,7 +248,9 @@ INSERT INTO `payallowance` (`payallowanceid`, `paymentid`, `allowancehead`, `amo
 	(14, 11, 'Transport', 3000),
 	(15, 12, 'Medical', 7200),
 	(16, 12, 'Transport', 3000),
-	(17, 13, 'Medical', 7200);
+	(17, 13, 'Medical', 7200),
+	(18, 14, 'Medical', 7200),
+	(19, 14, 'Transport', 3000);
 /*!40000 ALTER TABLE `payallowance` ENABLE KEYS */;
 
 -- Dumping structure for table payeasy.paydeduction
@@ -258,9 +260,9 @@ CREATE TABLE IF NOT EXISTS `paydeduction` (
   `deductionhead` varchar(50) DEFAULT NULL,
   `amount` double DEFAULT NULL,
   PRIMARY KEY (`paydeductionid`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Dumping data for table payeasy.paydeduction: ~13 rows (approximately)
+-- Dumping data for table payeasy.paydeduction: ~14 rows (approximately)
 DELETE FROM `paydeduction`;
 /*!40000 ALTER TABLE `paydeduction` DISABLE KEYS */;
 INSERT INTO `paydeduction` (`paydeductionid`, `paymentid`, `deductionhead`, `amount`) VALUES
@@ -276,7 +278,8 @@ INSERT INTO `paydeduction` (`paydeductionid`, `paymentid`, `deductionhead`, `amo
 	(10, 11, 'Income Tax', 5400),
 	(11, 12, 'Income Tax', 5400),
 	(12, 13, 'Income Tax', 5400),
-	(13, 13, 'Refreshments', 1200);
+	(13, 13, 'Refreshments', 1200),
+	(14, 14, 'Refreshments', 1200);
 /*!40000 ALTER TABLE `paydeduction` ENABLE KEYS */;
 
 -- Dumping structure for table payeasy.payment
@@ -295,9 +298,9 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `totaldeduction` double DEFAULT NULL,
   `netsalary` double DEFAULT NULL,
   PRIMARY KEY (`paymentid`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Dumping data for table payeasy.payment: ~11 rows (approximately)
+-- Dumping data for table payeasy.payment: ~10 rows (approximately)
 DELETE FROM `payment`;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
 INSERT INTO `payment` (`paymentid`, `empname`, `jobtitlename`, `basicyearvalue`, `basicsalaryamount`, `payingmonth`, `payingyear`, `paytypename`, `checkno`, `bankname`, `totalallowance`, `totaldeduction`, `netsalary`) VALUES
@@ -313,7 +316,8 @@ INSERT INTO `payment` (`paymentid`, `empname`, `jobtitlename`, `basicyearvalue`,
 	(10, 'Kuddus', 'Web Developer', '2019', 60000, 'March', '2019', 'Cash', '564', 'fdsds', 7200, 5400, 61800),
 	(11, 'Kuddus', 'Web Developer', '2019', 60000, 'June', '2020', 'Bank Deposit', '897', 'jk', 10200, 5400, 64800),
 	(12, 'Kuddus', 'Web Developer', '2019', 60000, 'April', '2019', 'Bank Deposit', '98989', 'yfhgfgh', 10200, 5400, 64800),
-	(13, 'Kuddus', 'Web Developer', '2019', 60000, 'April', '2020', 'Bank Deposit', '6546', 'jhkjh', 7200, 6600, 60600);
+	(13, 'Kuddus', 'Web Developer', '2019', 60000, 'April', '2020', 'Bank Deposit', '6546', 'jhkjh', 7200, 6600, 60600),
+	(14, 'Kuddus', 'Web Developer', '2019', 60000, 'January', '2018', 'Bank Deposit', '88', 'LL', 10200, 1200, 69000);
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 
 -- Dumping structure for table payeasy.paytype
@@ -343,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`emailid`, `phone`, `username`) VALUES
-	('leon@gmail.com', '1548', 'Leon Saiful');
+	('saifulleon@gmail.com', '1548', 'Leon Saiful');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 -- Dumping structure for table payeasy.userrole
@@ -359,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `userrole` (
 DELETE FROM `userrole`;
 /*!40000 ALTER TABLE `userrole` DISABLE KEYS */;
 INSERT INTO `userrole` (`emailid`, `password`, `role`, `status`) VALUES
-	('leon@gmail.com', 'leon', 'ROLE_ADMIN', 'True');
+	('saifulleon@gmail.com', 'leon', 'ROLE_ADMIN', 'True');
 /*!40000 ALTER TABLE `userrole` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
