@@ -33,7 +33,6 @@ Some features of this application are vulnerable or imcomplete. Fix these issues
 - Error handaling not done properly in all situation
 - No prevention of duplicate data insertion by user
 - Pagination, Data shorting not done
-- Spring security configuration is incomplete
 - ??
 
 # Enjoy!
