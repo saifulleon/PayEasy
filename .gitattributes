@@ -1,4 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-* linguist-vendored
-*.java linguist-vendored=false
+#* linguist-vendored
+#*.java linguist-vendored=false
+
+src/main/webapp/resources/* linguist-vendored
